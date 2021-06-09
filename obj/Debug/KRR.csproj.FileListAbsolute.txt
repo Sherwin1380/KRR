@@ -1,0 +1,14 @@
+C:\Users\sherw\source\repos\KRR\KRR\bin\Debug\KRR.exe.config
+C:\Users\sherw\source\repos\KRR\KRR\bin\Debug\KRR.exe
+C:\Users\sherw\source\repos\KRR\KRR\bin\Debug\KRR.pdb
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.csprojAssemblyReference.cache
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.Form1.resources
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.Properties.Resources.resources
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.csproj.GenerateResource.cache
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.csproj.CoreCompileInputs.cache
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.exe
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.pdb
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.Agent1.resources
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.Agent2.resources
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.Result.resources
+C:\Users\sherw\source\repos\KRR\KRR\obj\Debug\KRR.Agentlist.resources

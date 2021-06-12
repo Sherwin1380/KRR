@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace KRR
 {
@@ -14,6 +10,7 @@ namespace KRR
     {
 
         List<string> InitialList = new List<string>();
+        Boolean domainstate = true;
         public Result()
         {
             InitializeComponent();
@@ -39,6 +36,25 @@ namespace KRR
         {
             try
             {
+                updateinitial();
+                if(domainstate)
+                checkafter();
+                samestate();
+            }
+            catch
+            {
+            
+            }
+
+            if (!domainstate)
+            {
+                resultLabel.Text = "";
+                MessageBox.Show("Inconsistent Domain", "DOMAIN STATUS");
+                domainstate = true;
+                return;
+            }
+            try
+            {
                 string query = queryTB.Text.ToString();
                 string[] k = query.Split(' ', ',', '=');
                 List<string> resultset = new List<string>();
@@ -48,7 +64,6 @@ namespace KRR
                     case "holds":
                         {
                             string tocheck = k[0];
-                            var checklist = InitialList.ToList();
                             resultset = InitialList.ToList();
                             for (int i = 3; i < k.Length; i++)
                             {
@@ -56,119 +71,96 @@ namespace KRR
                                 {
                                     if (state.action.Equals(k[i]) && state.agent.Equals(k[i + 1]))
                                     {
-                                        string change = state.fluent;
-                                        var condition = state.condition;
-                                        string changefactor = change;
-                                        if (change[0] == '-')
+                                        var flag = 0;
+                                        foreach (var cond in state.condition)
                                         {
-                                            changefactor = change.Remove(0, 1);
-                                        }
-                                        else
-                                        {
-                                            changefactor = "-" + change;
-                                        }
-                                        if (condition.Count == 0)
-                                        {
-                                            for (int j = 0; j < checklist.Count; j++)
+                                            if (!resultset.Contains(cond))
                                             {
-                                                if (checklist[j] == changefactor)
-                                                {
-                                                    resultset[j] = change;
-                                                }
+                                                flag = 1;
                                             }
                                         }
-                                        else
+                                        if (flag == 0)
                                         {
-                                            var flag = true;
-                                            foreach (var con in condition)
+                                            string agh = "";
+                                            if (state.fluent[0] == '-')
                                             {
-                                                if (!checklist.Contains(con))
-                                                    flag = false;
+                                                agh = state.fluent.Remove(0, 1);
                                             }
-                                            if (flag == true)
+                                            else
                                             {
-                                                for (int j = 0; j < checklist.Count; j++)
-                                                {
-                                                    if (checklist[j] == changefactor)
-                                                        resultset[j] = change;
-                                                }
+                                                agh = "-" + state.fluent;
+                                            }
+                                            if (resultset.Contains(agh))
+                                            {
+                                                resultset.Remove(agh);
+                                                resultset.Add(state.fluent);
+                                            }
+                                            else if (!resultset.Contains(state.fluent))
+                                            {
+                                                resultset.Add(state.fluent);
                                             }
                                         }
                                     }
                                 }
-                                checklist = resultset.ToList();
                             }
 
-                            if (resultset.Contains(tocheck))
-                            {
-                                resultLabel.Text = "THE RESULT IS TRUE";
+                                if (resultset.Contains(tocheck))
+                                {
+                                    resultLabel.Text = "THE RESULT IS TRUE";
+                                }
+                                else
+                                {
+                                    resultLabel.Text = "THE RESULT IS FALSE";
+                                }
+                                break;
                             }
-                            else
-                            {
-                                resultLabel.Text = "THE RESULT IS FALSE";
-                            }
-                            break;
-                        }
+                      
 
 
                     case "is":
                         {
-                            var checklist = InitialList.ToList();
                             resultset = InitialList.ToList();
+                            var tofind = k[0];
                             var resultflag = 0;
                             for (int i = 4; i < k.Length; i++)
                             {
-                                if (k[i].Equals("by"))
-                                    break;
                                 foreach (var state in Agent2.states)
                                 {
                                     if (state.action.Equals(k[i]) && state.agent.Equals(k[i + 1]))
                                     {
-                                        string change = state.fluent;
-                                        var condition = state.condition;
-                                        string changefactor = change;
-                                        if (change[0] == '-')
+                                        var flag = 0;
+                                        foreach (var cond in state.condition)
                                         {
-                                            changefactor = change.Remove(0, 1);
-                                        }
-                                        else
-                                        {
-                                            changefactor = "-" + change;
-                                        }
-                                        if (condition.Count == 0)
-                                        {
-                                            for (int j = 0; j < checklist.Count; j++)
+                                            if (!resultset.Contains(cond))
                                             {
-                                                if (checklist[j] == changefactor)
-                                                {
-                                                    resultset[j] = change;
-                                                }
+                                                flag = 1;
                                             }
                                         }
-                                        else
+                                        if (flag == 0)
                                         {
-                                            var flag = true;
-                                            foreach (var con in condition)
+                                            if (state.agent.Equals(tofind))
+                                                resultflag = 1;
+                                            string agh = "";
+                                            if (state.fluent[0] == '-')
                                             {
-                                                if (!checklist.Contains(con))
-                                                    flag = false;
+                                                agh = state.fluent.Remove(0, 1);
                                             }
-                                            if (flag == true)
+                                            else
                                             {
-                                                for (int j = 0; j < checklist.Count; j++)
-                                                {
-                                                    if (checklist[j] == changefactor)
-                                                    {
-                                                        resultset[j] = change;
-                                                        if (state.agent.Equals(k[0]))
-                                                            resultflag = 1;
-                                                    }
-                                                }
+                                                agh = "-" + state.fluent;
+                                            }
+                                            if (resultset.Contains(agh))
+                                            {
+                                                resultset.Remove(agh);
+                                                resultset.Add(state.fluent);
+                                            }
+                                            else if (!resultset.Contains(state.fluent))
+                                            {
+                                                resultset.Add(state.fluent);
                                             }
                                         }
                                     }
                                 }
-                                checklist = resultset.ToList();
                             }
 
                             if (resultflag == 1)
@@ -196,14 +188,131 @@ namespace KRR
             }
         }
 
-        internal void updatecombo()
-        {
-
-            foreach (string action in Form1.fluentstatelist)
+        private void samestate()
+        { List<string> h = new List<string>();
+            foreach (var state in Agent2.states)
             {
-                comboBox1.Items.Add(action);
+                string agh = "";
+                if (state.fluent[0] == '-')
+                {
+                    agh = state.fluent.Remove(0, 1);
+                }
+                else
+                {
+                    agh = "-" + state.fluent;
+                }
+                if (!h.Contains(agh))
+                {
+                    h.Add(state.fluent);
+                }
+                else
+                { 
+                domainstate = false;
+                }
             }
-            comboBox1.SelectedIndex = 0;
+        }
+
+        private void checkafter()
+        {
+            foreach (var after in Agent2.afterstatements)
+            {
+                List<string> actions = after.action;
+                List<string> incopy = InitialList.ToList();
+                foreach (var ac in actions)
+                {
+                    foreach (var state in Agent2.states)
+                    {
+                        if (state.agent == after.agent && state.action == ac)
+                        {
+                            if (state.condition.Count < 1)
+                            {
+                                string agh = "";
+                                if (state.fluent[0] == '-')
+                                {
+                                    agh = state.fluent.Remove(0, 1);
+                                }
+                                else
+                                {
+                                    agh = "-" + state.fluent;
+                                }
+                                if (incopy.Contains(agh))
+                                {
+                                    incopy.Remove(agh);
+                                    incopy.Add(state.fluent);
+                                }
+                                else if (!incopy.Contains(state.fluent))
+                                {
+                                    incopy.Add(state.fluent);
+                                }
+                            }
+                            else
+                            {
+                                int flag = 0;
+                                foreach (var conditions in state.condition)
+                                {
+                                    if (!incopy.Contains(conditions))
+                                    {
+                                        flag = 1;
+                                        break;
+                                    }
+                                }
+                                if (flag == 0 && Form1.fluentstatelist.Contains(state.fluent))
+                                {
+                                    string agh = "";
+                                    if (state.fluent[0] == '-')
+                                    {
+                                        agh = state.fluent.Remove(0, 1);
+                                    }
+                                    else
+                                    {
+                                        agh = "-" + state.fluent;
+                                    }
+                                    if (incopy.Contains(agh))
+                                    {
+                                        incopy.Remove(agh);
+                                        incopy.Add(state.fluent);
+                                    }
+                                    else if (!incopy.Contains(state.fluent))
+                                    {
+                                        incopy.Add(state.fluent);
+                                    }
+                                }
+                            }
+                        }
+                }
+                }
+                if (!incopy.Contains(after.fluent))
+                {
+                    domainstate = false;
+                }
+
+            }
+        }
+
+        private void updateinitial()
+        {
+            InitialList.Clear();
+            var initial = initialbox.Text.ToString().Split(',');
+            foreach (var initialaction in initial)
+            {
+                string agh = "";
+                if (initialaction[0] == '-')
+                {
+                    agh = initialaction.Remove(0, 1);
+                }
+                else
+                {
+                    agh = "-" + initialaction;
+                }
+                if ((!InitialList.Contains(agh)) && (Form1.fluentstatelist.Contains(agh)) )
+                {
+                    InitialList.Add(initialaction);
+                }
+                else
+                {
+                    domainstate = false;
+                }
+            }
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -212,61 +321,10 @@ namespace KRR
             Agent2.agent2.Show();
         }
 
-        public void displayinitial()
-        {
-            string initial = "";
-            foreach (var fluent in Form1.fluentstatelist)
-            {
-                if (fluent[0] != '-')
-                {
-                    initial = initial + fluent + ",";
-                    InitialList.Add(fluent);
-                }
-            }
-            initial = initial.Remove(initial.Length - 1);
-            InitialLabel.Text = "Initial State = (" + initial + ")";
-        }
-
         private void queryTB_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void changebutton_Click(object sender, EventArgs e)
-        {
-            string tochange = comboBox1.SelectedItem.ToString();
-            string find = "";
-            if (tochange[0] == '-')
-            {
-                find = tochange.Remove(0, 1);
-            }
-            else
-            {
-                find = "-" + tochange;
-            }
-            List<string> update = new List<string>();
-
-            update = InitialList.Where(x => !x.Equals(find)).ToList();
-
-            if(!update.Contains(tochange))
-            update.Add(tochange);
-
-            InitialList = update.ToList();
-
-            updateinitialstate(update);
-
-
-        }
-
-        private void updateinitialstate(List<String> Inlist)
-        {
-            string initial = "";
-            foreach (var fluent in Inlist)
-            {
-                    initial = initial + fluent + ",";
-            }
-            initial = initial.Remove(initial.Length - 1);
-            InitialLabel.Text = "Initial State = (" + initial + ")";
-        }
     }
 }

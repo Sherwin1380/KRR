@@ -11,7 +11,9 @@ namespace KRR
         Result result = new Result();
 
         public static List<State> states = new List<State>();
+        public static List<After> afterstatements = new List<After>();
         public static List<string> condition1 = new List<string>();
+        public static List<string> aftereffects = new List<string>();
 
         public static Agent2 agent2;
         public Agent2()
@@ -67,6 +69,8 @@ namespace KRR
             actioncomboBox2.Items.Clear();
             fluentcomboBox2.Items.Clear();
             agentcomboBox2.Items.Clear();
+            andcombobox2.Items.Clear();
+
 
             andcomboBox.Items.Add("");
             conditioncomboBox.Items.Add("");
@@ -76,9 +80,11 @@ namespace KRR
             {
                 actioncomboBox.Items.Add(action);
                 actioncomboBox2.Items.Add(action);
+                andcombobox2.Items.Add(action);
             }
             actioncomboBox.SelectedIndex = 0;
             actioncomboBox2.SelectedIndex = 0;
+            andcombobox2.SelectedIndex = 0;
 
             foreach (string action in Form1.fluentstatelist)
             {
@@ -112,7 +118,7 @@ namespace KRR
 
         private void Agent2_Load(object sender, EventArgs e)
         {
-
+                
         }
 
         private void Result_FormClosing(object sender, FormClosingEventArgs e)
@@ -188,8 +194,6 @@ namespace KRR
         {
             result.Show();
             this.Hide();
-            result.displayinitial();
-            result.updatecombo();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -198,22 +202,32 @@ namespace KRR
             string agent = agentcomboBox2.SelectedItem.ToString();
             string fluent = fluentcomboBox2.SelectedItem.ToString();
             int flag = 0;
-
-            foreach (var statevalue in states)
+            if (!aftereffects.Contains(action))
+                aftereffects.Add(action);
+            foreach (var afterstate in afterstatements)
             {
-                if (statevalue.action == action && statevalue.agent == agent && statevalue.fluent == fluent)
+                if (afterstate.agent == agent && afterstate.fluent == fluent)
                 {
-                    flag = 1;
+                    bool boolflag = Enumerable.SequenceEqual(aftereffects.OrderBy(ec => ec), afterstate.action.OrderBy(ec => ec));
+                    if (boolflag)
+                        flag = 1;
                 }
             }
 
             if (flag == 0)
             {
-                State state = new State { action = action, agent = agent, fluent = fluent , condition = new List<string>() };
-                states.Add(state);
-
-                storyLabel.Text = storyLabel.Text.ToString() + fluent + " after " + action + " by " + agent + " ";
-                storyLabel.Text = storyLabel.Text.ToString() + Environment.NewLine;
+                After af = new After() { action = aftereffects.ToList() , fluent = fluent , agent = agent };
+                afterstatements.Add(af);
+                andactionLabel.Text = "";
+                storyLabel.Text = storyLabel.Text + fluent + " AFTER ";
+                foreach (var afd in aftereffects)
+                {
+                    storyLabel.Text = storyLabel.Text + afd + " , ";
+                }
+                storyLabel.Text = storyLabel.Text.Remove(storyLabel.Text.Length - 2);
+                storyLabel.Text = storyLabel.Text + " BY " + agent;  
+                storyLabel.Text = storyLabel.Text + Environment.NewLine;
+                aftereffects.Clear();
             }
             else
             {
@@ -245,6 +259,22 @@ namespace KRR
         {
             condition1.Clear();
             andLabel.Text = "";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string andcond = andcombobox2.SelectedItem.ToString();
+            if (!aftereffects.Contains(andcond))
+            {
+                aftereffects.Add(andcond);
+                andactionLabel.Text = andactionLabel.Text + "AND " + andcond + Environment.NewLine;            
+            }
+            }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            aftereffects.Clear();
+            andactionLabel.Text = "";
         }
     }
 }

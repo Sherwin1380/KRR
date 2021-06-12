@@ -36,10 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resultLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
-            this.InitialLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.changebutton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.initialbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -54,7 +52,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(182, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(357, 39);
+            this.label1.Size = new System.Drawing.Size(286, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter your Query Here";
             // 
@@ -86,7 +84,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(268, 247);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 42);
+            this.label2.Size = new System.Drawing.Size(135, 33);
             this.label2.TabIndex = 4;
             this.label2.Text = "RESULT";
             // 
@@ -96,7 +94,7 @@
             this.resultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resultLabel.Location = new System.Drawing.Point(95, 321);
             this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(0, 39);
+            this.resultLabel.Size = new System.Drawing.Size(0, 31);
             this.resultLabel.TabIndex = 5;
             // 
             // backButton
@@ -109,51 +107,28 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // InitialLabel
-            // 
-            this.InitialLabel.AutoSize = true;
-            this.InitialLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InitialLabel.Location = new System.Drawing.Point(30, 202);
-            this.InitialLabel.Name = "InitialLabel";
-            this.InitialLabel.Size = new System.Drawing.Size(145, 25);
-            this.InitialLabel.TabIndex = 7;
-            this.InitialLabel.Text = "Initial State = ";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(31, 169);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(49, 186);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(254, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "CHANGE INITIAL STATE FLUENT:";
+            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "INITIALLY";
             // 
-            // changebutton
+            // initialbox
             // 
-            this.changebutton.Location = new System.Drawing.Point(428, 164);
-            this.changebutton.Name = "changebutton";
-            this.changebutton.Size = new System.Drawing.Size(135, 23);
-            this.changebutton.TabIndex = 9;
-            this.changebutton.Text = "CHANGE";
-            this.changebutton.UseVisualStyleBackColor = true;
-            this.changebutton.Click += new System.EventHandler(this.changebutton_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(243, 166);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 24);
-            this.comboBox1.TabIndex = 10;
+            this.initialbox.Location = new System.Drawing.Point(179, 184);
+            this.initialbox.Name = "initialbox";
+            this.initialbox.Size = new System.Drawing.Size(385, 22);
+            this.initialbox.TabIndex = 8;
             // 
             // Result
             // 
             this.ClientSize = new System.Drawing.Size(670, 423);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.changebutton);
+            this.Controls.Add(this.initialbox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.InitialLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.label2);
@@ -178,9 +153,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.Label InitialLabel;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button changebutton;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox initialbox;
     }
 }

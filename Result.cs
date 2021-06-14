@@ -189,7 +189,8 @@ namespace KRR
         }
 
         private void samestate()
-        { List<string> h = new List<string>();
+        {
+            Dictionary<string, string> h = new Dictionary<string, string>();
             foreach (var state in Agent2.states)
             {
                 string agh = "";
@@ -201,13 +202,17 @@ namespace KRR
                 {
                     agh = "-" + state.fluent;
                 }
-                if (!h.Contains(agh))
+                string find = state.action + state.agent;
+                if (h.Keys.Contains(find))
                 {
-                    h.Add(state.fluent);
+                    if (agh.Equals(h[find]))
+                    {
+                        domainstate = false;
+                    }
                 }
                 else
-                { 
-                domainstate = false;
+                {
+                    h.Add(find, state.fluent);
                 }
             }
         }

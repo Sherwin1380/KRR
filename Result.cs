@@ -11,10 +11,11 @@ namespace KRR
 
         List<string> InitialList = new List<string>();
         Boolean domainstate = true;
+        public static Result result;
         public Result()
         {
             InitializeComponent();
-
+            result = this;
         }
 
         private void display()
@@ -48,8 +49,7 @@ namespace KRR
 
             if (!domainstate)
             {
-                resultLabel.Text = "";
-                MessageBox.Show("Inconsistent Domain", "DOMAIN STATUS");
+                resultLabel.Text = "THE RESULT IS TRUE" + " - Inconsistent Domain";
                 domainstate = true;
                 return;
             }
@@ -329,6 +329,7 @@ namespace KRR
         private void Newbutton_Click(object sender, EventArgs e)
         {
             Form1.form1.Show();
+            result.Hide();
             Form1.form1.clear();
             Agent1.agent1.clear();
             Agent2.agent2.clear();

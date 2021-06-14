@@ -22,22 +22,6 @@ namespace KRR
             conditioncomboBox.Items.Add("");
             actioncomboBox.Items.Add("");
             agent2 = this;
-
-            //State state1 = new State { action = "MAKE", agent = "Michael", fluent = "full", condition = "" };
-            //State state2 = new State { action = "DRINK", agent = "Jill", fluent = "-full", condition = "" };
-            //State state3 = new State { action = "DRINK", agent = "Jill", fluent = "drank", condition = "full" };
-
-            //states.Add(state1);
-            //states.Add(state2);
-            //states.Add(state3);
-
-            //State state1 = new State { action = "LOAD", agent = "Ken", fluent = "loaded", condition = "" };
-            //State state2 = new State { action = "DRIVE", agent = "Sasha", fluent = "-loaded", condition = "" };
-            //State state3 = new State { action = "DRIVE", agent = "Sasha", fluent = "delivered", condition = "loaded" };
-
-            //states.Add(state1);
-            //states.Add(state2);
-            //states.Add(state3);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -66,6 +50,8 @@ namespace KRR
             fluentcomboBox.Items.Clear();
             agentcomboBox.Items.Clear();
             conditioncomboBox.Items.Clear();
+            andcomboBox.Items.Clear();
+
             actioncomboBox2.Items.Clear();
             fluentcomboBox2.Items.Clear();
             agentcomboBox2.Items.Clear();

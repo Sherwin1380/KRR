@@ -38,6 +38,7 @@
             this.backButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.initialbox = new System.Windows.Forms.TextBox();
+            this.Newbutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -52,7 +53,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(182, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(286, 31);
+            this.label1.Size = new System.Drawing.Size(357, 39);
             this.label1.TabIndex = 1;
             this.label1.Text = "Enter your Query Here";
             // 
@@ -62,7 +63,6 @@
             this.queryTB.Name = "queryTB";
             this.queryTB.Size = new System.Drawing.Size(532, 22);
             this.queryTB.TabIndex = 2;
-            this.queryTB.Text = "drank holds after MAKE-Michael,DRINK-Jill,MAKE-Micahel,DRINK-Jill";
             this.queryTB.TextChanged += new System.EventHandler(this.queryTB_TextChanged);
             // 
             // calculatebutton
@@ -84,7 +84,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(268, 247);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 33);
+            this.label2.Size = new System.Drawing.Size(172, 42);
             this.label2.TabIndex = 4;
             this.label2.Text = "RESULT";
             // 
@@ -94,7 +94,7 @@
             this.resultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resultLabel.Location = new System.Drawing.Point(95, 321);
             this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(0, 31);
+            this.resultLabel.Size = new System.Drawing.Size(0, 39);
             this.resultLabel.TabIndex = 5;
             // 
             // backButton
@@ -113,7 +113,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(49, 186);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.Size = new System.Drawing.Size(112, 25);
             this.label3.TabIndex = 7;
             this.label3.Text = "INITIALLY";
             // 
@@ -124,9 +124,20 @@
             this.initialbox.Size = new System.Drawing.Size(385, 22);
             this.initialbox.TabIndex = 8;
             // 
+            // Newbutton
+            // 
+            this.Newbutton.Location = new System.Drawing.Point(447, 371);
+            this.Newbutton.Name = "Newbutton";
+            this.Newbutton.Size = new System.Drawing.Size(75, 23);
+            this.Newbutton.TabIndex = 9;
+            this.Newbutton.Text = "NEW";
+            this.Newbutton.UseVisualStyleBackColor = true;
+            this.Newbutton.Click += new System.EventHandler(this.Newbutton_Click);
+            // 
             // Result
             // 
             this.ClientSize = new System.Drawing.Size(670, 423);
+            this.Controls.Add(this.Newbutton);
             this.Controls.Add(this.initialbox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.backButton);
@@ -155,5 +166,6 @@
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox initialbox;
+        private System.Windows.Forms.Button Newbutton;
     }
 }

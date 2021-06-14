@@ -276,5 +276,14 @@ namespace KRR
             aftereffects.Clear();
             andactionLabel.Text = "";
         }
+
+        public void clear()
+        {
+            states.Clear();
+            condition1.Clear();
+            aftereffects.Clear();
+            afterstatements.Clear();
+            storyLabel.Text = "";
+        }
     }
 }

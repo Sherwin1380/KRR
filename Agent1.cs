@@ -80,5 +80,11 @@ namespace KRR
             Form1.form1.Show();
             this.Hide();
         }
+
+        internal void clear()
+        {
+            actionlist.Clear();
+            actionTBList.Text = "";
+       }
     }
 }

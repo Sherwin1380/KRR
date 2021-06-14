@@ -20,19 +20,6 @@ namespace KRR
         public Form1()
         {
             InitializeComponent();
-            //fluentlist.Add("full");
-            //fluentlist.Add("drank");
-            //fluentstatelist.Add("drank");
-            //fluentstatelist.Add("-drank");
-            //fluentstatelist.Add("full");
-            //fluentstatelist.Add("-full");
-
-            //fluentlist.Add("loaded");
-            //fluentlist.Add("delivered");
-            //fluentstatelist.Add("loaded");
-            //fluentstatelist.Add("-loaded");
-            //fluentstatelist.Add("delivered");
-            //fluentstatelist.Add("-delivered");
             form1 = this;
         }
 
@@ -75,6 +62,13 @@ namespace KRR
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void clear()
+        {
+            fluentlist.Clear();
+            fluentstatelist.Clear();
+            fluentlistlabel.Text = "";
         }
     }
 }

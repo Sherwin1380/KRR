@@ -85,5 +85,11 @@ namespace KRR
         {
 
         }
+
+        public void clear()
+        {
+            agentslist.Clear();
+            agentlistlabel.Text = "";
+        }
     }
 }

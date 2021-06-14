@@ -326,5 +326,13 @@ namespace KRR
 
         }
 
+        private void Newbutton_Click(object sender, EventArgs e)
+        {
+            Form1.form1.Show();
+            Form1.form1.clear();
+            Agent1.agent1.clear();
+            Agent2.agent2.clear();
+            Agentlist.agentlist.clear();
+        }
     }
 }

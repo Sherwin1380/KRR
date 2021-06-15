@@ -37,8 +37,9 @@ namespace KRR
         {
             try
             {
-                updateinitial();
-                if(domainstate)
+                domainstate = Agent2.agent2.updateinitial(domainstate);
+                InitialList = Agent2.InitialList.ToList();
+                if (domainstate)
                 checkafter();
                 samestate();
             }
@@ -291,32 +292,6 @@ namespace KRR
                     domainstate = false;
                 }
 
-            }
-        }
-
-        private void updateinitial()
-        {
-            InitialList.Clear();
-            var initial = initialbox.Text.ToString().Split(',');
-            foreach (var initialaction in initial)
-            {
-                string agh = "";
-                if (initialaction[0] == '-')
-                {
-                    agh = initialaction.Remove(0, 1);
-                }
-                else
-                {
-                    agh = "-" + initialaction;
-                }
-                if ((!InitialList.Contains(agh)) && (Form1.fluentstatelist.Contains(agh)) )
-                {
-                    InitialList.Add(initialaction);
-                }
-                else
-                {
-                    domainstate = false;
-                }
             }
         }
 

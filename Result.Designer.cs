@@ -36,8 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.resultLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.initialbox = new System.Windows.Forms.TextBox();
             this.Newbutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -82,7 +80,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(268, 247);
+            this.label2.Location = new System.Drawing.Point(250, 196);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 42);
             this.label2.TabIndex = 4;
@@ -107,23 +105,6 @@
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(49, 186);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 25);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "INITIALLY";
-            // 
-            // initialbox
-            // 
-            this.initialbox.Location = new System.Drawing.Point(179, 184);
-            this.initialbox.Name = "initialbox";
-            this.initialbox.Size = new System.Drawing.Size(385, 22);
-            this.initialbox.TabIndex = 8;
-            // 
             // Newbutton
             // 
             this.Newbutton.Location = new System.Drawing.Point(447, 371);
@@ -138,8 +119,6 @@
             // 
             this.ClientSize = new System.Drawing.Size(670, 423);
             this.Controls.Add(this.Newbutton);
-            this.Controls.Add(this.initialbox);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.resultLabel);
             this.Controls.Add(this.label2);
@@ -164,8 +143,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.Button backButton;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox initialbox;
         private System.Windows.Forms.Button Newbutton;
     }
 }

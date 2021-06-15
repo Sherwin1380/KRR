@@ -10,6 +10,7 @@ namespace KRR
     {
         Result result = new Result();
 
+        public static List<string> InitialList = new List<string>();
         public static List<State> states = new List<State>();
         public static List<After> afterstatements = new List<After>();
         public static List<string> condition1 = new List<string>();
@@ -270,6 +271,33 @@ namespace KRR
             aftereffects.Clear();
             afterstatements.Clear();
             storyLabel.Text = "";
+        }
+
+        public bool updateinitial(bool domainstate)
+        {
+            InitialList.Clear();
+            var initial = initialbox.Text.ToString().Split(',');
+            foreach (var initialaction in initial)
+            {
+                string agh = "";
+                if (initialaction[0] == '-')
+                {
+                    agh = initialaction.Remove(0, 1);
+                }
+                else
+                {
+                    agh = "-" + initialaction;
+                }
+                if ((!InitialList.Contains(agh)) && (Form1.fluentstatelist.Contains(agh)))
+                {
+                    InitialList.Add(initialaction);
+                }
+                else
+                {
+                    domainstate = false;
+                }
+            }
+            return domainstate;
         }
     }
 }

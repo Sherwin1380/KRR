@@ -271,6 +271,7 @@ namespace KRR
             aftereffects.Clear();
             afterstatements.Clear();
             storyLabel.Text = "";
+            initialbox.Text = "";
         }
 
         public bool updateinitial(bool domainstate)

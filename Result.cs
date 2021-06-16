@@ -299,6 +299,9 @@ namespace KRR
         {
             this.Hide();
             Agent2.agent2.Show();
+            resultLabel.Text = "";
+            queryTB.Text = "";
+
         }
 
         private void queryTB_TextChanged(object sender, EventArgs e)
@@ -313,6 +316,8 @@ namespace KRR
             Form1.form1.clear();
             Agent1.agent1.clear();
             Agent2.agent2.clear();
+            resultLabel.Text = "";
+            queryTB.Text = "";
             Agentlist.agentlist.clear();
         }
     }
